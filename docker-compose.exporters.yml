@@ -17,6 +17,10 @@ services:
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
     restart: unless-stopped
+    expose:
+      - 9100
+    ports:
+      - 9101:9100
     network_mode: host
     labels:
       org.label-schema.group: "monitoring"
@@ -35,5 +39,9 @@ services:
       - /cgroup:/cgroup:ro
     restart: unless-stopped
     network_mode: host
+    expose:
+      - 8080
+    ports:
+      - 9102:8080
     labels:
       org.label-schema.group: "monitoring"
