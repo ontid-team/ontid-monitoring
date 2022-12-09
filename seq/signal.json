@@ -38,7 +38,7 @@
   "IsProtected": false,
   "Grouping": "Explicit",
   "ExplicitGroupName": "Database",
-  "OwnerId": null,
+  "OwnerId": null
 }
 {
   "Title": "Error",
@@ -55,7 +55,7 @@
   "IsProtected": false,
   "Grouping": "Explicit",
   "ExplicitGroupName": "Queue",
-  "OwnerId": null,
+  "OwnerId": null
 }
 {
   "Title": "Error",
