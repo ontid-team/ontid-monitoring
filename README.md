@@ -11,13 +11,14 @@ Prerequisites:
 Containers:
 
 * Prometheus (metrics database) `http://<host-ip>:9090`
-* Prometheus-Pushgateway (push acceptor for ephemeral and batch jobs) `http://<host-ip>:9091`
+* Prometheus-pushgateway (push acceptor for ephemeral and batch jobs) `http://<host-ip>:9091`
 * Grafana (visualize metrics) `http://<host-ip>:9092`
 * AlertManager (alerts management) `http://<host-ip>:9093`
 * NodeExporter (host metrics collector)
 * cAdvisor (containers metrics collector)
+* Seq (containers logging) 'http://<host-ip>:9094'
 
-## Setup Grafana
+## Setup - 1 Grafana
 
 Navigate to `http://<host-ip>:9092` and login with user ***admin*** password ***admin***. You can change the credentials in the compose file or by supplying the `ADMIN_USER` and `ADMIN_PASSWORD` environment variables on compose up. The config file can be added directly in grafana part like this
 
@@ -109,7 +110,7 @@ The Monitor Services Dashboard shows key metrics for monitoring the containers t
 * Prometheus HTTP requests graph
 * Prometheus alerts graph
 
-## Define alerts
+## Setup - 2 Define alerts
 
 Three alert groups have been setup within the [alert.rules](https://github.com/stefanprodan/dockprom/blob/master/prometheus/alert.rules) configuration file:
 
@@ -222,7 +223,7 @@ Trigger an alert if a container is using more than 1.2GB of RAM for more than 30
       description: "Jenkins memory consumption is at {{ humanize $value}}."
 ```
 
-## Setup alerting
+## Setup - 3 alerting
 
 The AlertManager service is responsible for handling alerts sent by Prometheus server.
 AlertManager can send notifications via email, Pushover, Slack, HipChat or any other system that exposes a webhook interface.
@@ -269,10 +270,10 @@ Please replace the `user:password` part with your user and password set in the i
 
 [In Grafana versions >= 5.1 the id of the grafana user has been changed](http://docs.grafana.org/installation/docker/#migration-from-a-previous-version-of-the-docker-container-to-5-1-or-later). Unfortunately this means that files created prior to 5.1 won’t have the correct permissions for later versions.
 
-| Version |   User  | User ID |
-|:-------:|:-------:|:-------:|
-|  < 5.1  | grafana |   104   |
-|  \>= 5.1 | grafana |   472   |
+| Version   |   User  | User ID |
+|:---------:|:-------:|:-------:|
+|   < 5.1   | grafana |   104   |
+|  \>= 5.1  | grafana |   472   |
 
 There are two possible solutions to this problem.
 
@@ -345,4 +346,11 @@ To run the grafana container as `user: 104` change your `docker-compose.yml` lik
       - monitor-net
     labels:
       org.label-schema.group: "monitoring"
+```
+
+
+### Setup - 4 Import SEQ data
+
+```bash
+$ docker exec -it seq-monitoring seqcli signal import -i ./seq/signal.json -s <localhost> -a <API_KEY>
 ```

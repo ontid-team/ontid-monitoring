@@ -1,0 +1,25 @@
+version: '3.9'
+
+networks:
+  monitoring:
+    driver: bridge
+
+services:
+  seq-monitoring:
+    image: datalust/seq:latest
+    container_name: seq-monitoring
+    volumes:
+      - ./data/seq:/data
+    environment:
+      ACCEPT_EULA: 'Y'
+      BASE_URI: ${SEQ_BASE_URI}
+      SEQ_STORAGE_SECRETKEY: ${SEQ_STORAGE_SECRETKEY}
+      SEQ_FIRSTRUN_ADMINUSERNAME: ${SEQ_FIRSTRUN_ADMINUSERNAME}
+      SEQ_FIRSTRUN_ADMINPASSWORDHASH: ${SEQ_FIRSTRUN_ADMINPASSWORDHASH}
+    networks:
+      - monitoring
+    ports:
+      - ${SEQ_PORT_UI}:80
+    labels:
+      org.label-schema.group: "monitoring"
+    restart: unless-stopped

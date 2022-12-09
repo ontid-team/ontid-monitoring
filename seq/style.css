@@ -1,0 +1,65 @@
+.event .level-indicator.seq-level-trace {
+    background-color: #649C4C !important;
+}
+
+li.signal.level-trace .icon-signal .center,
+li.signal.database-trace .icon-signal .center,
+li.signal.http-requests-trace .icon-signal .center,
+li.signal.queue-trace .icon-signal .center {
+    fill: #649C4C !important;
+}
+
+.event .level-indicator.seq-level-debug {
+    background-color: #ECB740 !important;
+}
+
+li.signal.level-debug .icon-signal .center,
+li.signal.database-debug .icon-signal .center,
+li.signal.http-requests-debug .icon-signal .center,
+li.signal.queue-debug .icon-signal .center {
+    fill: #ECB740 !important;
+}
+
+.event .level-indicator.seq-level-information {
+    background-color: #68A0D4 !important;
+}
+
+li.signal.level-info .icon-signal .center,
+li.signal.database-info .icon-signal .center,
+li.signal.http-requests-info .icon-signal .center,
+li.signal.queue-info .icon-signal .center {
+    fill: #68A0D4 !important;
+}
+
+.event .level-indicator.seq-level-warning {
+    background-color: #DE843D !important;
+}
+
+li.signal.level-warning .icon-signal .center,
+li.signal.database-warning .icon-signal .center,
+li.signal.http-requests-warning .icon-signal .center,
+li.signal.queue-warning .icon-signal .center {
+    fill: #DE843D !important;
+}
+
+.event .level-indicator.seq-level-error {
+    background-color: #BF2314 !important;
+}
+
+li.signal.level-error .icon-signal .center,
+li.signal.database-error .icon-signal .center,
+li.signal.http-requests-error .icon-signal .center,
+li.signal.queue-error .icon-signal .center {
+    fill: #BF2314 !important;
+}
+
+.event .level-indicator.seq-level-fatal {
+    background-color: #761D14 !important;
+}
+
+li.signal.level-fatal .icon-signal .center,
+li.signal.database-fatal .icon-signal .center,
+li.signal.http-requests-fatal .icon-signal .center,
+li.signal.queue-fatal .icon-signal .center {
+    fill: #761D14 !important;
+}
