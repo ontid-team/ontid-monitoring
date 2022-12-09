@@ -13,13 +13,12 @@ services:
     environment:
       ACCEPT_EULA: 'Y'
       BASE_URI: ${SEQ_BASE_URI}
-      SEQ_STORAGE_SECRETKEY: ${SEQ_STORAGE_SECRETKEY}
       SEQ_FIRSTRUN_ADMINUSERNAME: ${SEQ_FIRSTRUN_ADMINUSERNAME}
       SEQ_FIRSTRUN_ADMINPASSWORDHASH: ${SEQ_FIRSTRUN_ADMINPASSWORDHASH}
     networks:
       - monitoring
     ports:
-      - ${SEQ_PORT_UI}:80
+      - ${SEQ_PORT}:80
     labels:
       org.label-schema.group: "monitoring"
     restart: unless-stopped

@@ -351,6 +351,16 @@ To run the grafana container as `user: 104` change your `docker-compose.yml` lik
 
 ### Setup - 4 Import SEQ data
 
-```bash
-$ docker exec -it seq-monitoring seqcli signal import -i ./seq/signal.json -s <localhost> -a <API_KEY>
+```shell
+  docker pull datalust/seq:latest
+```
+To run it as a container, a hash of the desired admin password is needed.
+
+```shell
+  PH=$(echo '<PASSWORD>' | docker run --rm -i datalust/seq:latest config hash)
+  echo $PH
+```
+
+```shell
+  docker exec -it seq-monitoring seqcli signal import -i ./seq/signal.json -s <localhost> -a <API_KEY>
 ```
