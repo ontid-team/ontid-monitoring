@@ -362,5 +362,5 @@ To run it as a container, a hash of the desired admin password is needed.
 ```
 
 ```shell
-  docker exec -it seq-monitoring seqcli signal import -i ./seq/signal.json -s <localhost> -a <API_KEY>
+  cat ./seq/signal.json | docker run --rm -i datalust/seqcli signal import -s <localhost> -a <API_KEY>
 ```
